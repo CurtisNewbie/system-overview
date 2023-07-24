@@ -35,3 +35,22 @@ sequenceDiagram
     ev--)vfm: 8. (MQ, Binlog) thumbnail updated event
     vfm--)fan:9. Create gallery image
 ```
+
+### Delete File Event Pipelines
+
+```mermaid
+sequenceDiagram
+
+    participant b as browser
+    participant ev as event-pump
+    participant vfm as vfm
+    participant fan as fantahsea
+    participant mini as mini-fstore
+
+    b->>vfm:1. delete file
+    vfm->>mini:2. mark file deleted
+    mini--)mini:3. peridical job deletes actual files
+    ev--)vfm:4. (MQ, Binlog) file deleted event
+    vfm--)fan:5. (MQ) delete gallery image
+
+```
