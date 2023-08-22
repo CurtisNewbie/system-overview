@@ -2,7 +2,7 @@
 
 ## Overall Achitecture
 
-System Overview of my own projects.
+<img src="infrastructure.png" height="600px">
 
 <img src="system-overview.png" height="600px">
 
