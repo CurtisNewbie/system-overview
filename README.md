@@ -2,7 +2,7 @@
 
 ## Overall Achitecture
 
-<img src="infrastructure.png" height="600px">
+<img src="infrastructure.png" height="500px">
 
 <img src="system-overview.png" height="600px">
 
