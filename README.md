@@ -4,7 +4,7 @@
 
 System Overview of my own projects.
 
-<img src="system-overview-20230624.png" height="600px">
+<img src="system-overview.png" height="600px">
 
 ## Modules Overview
 
