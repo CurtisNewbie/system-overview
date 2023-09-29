@@ -1,0 +1,4 @@
+#!/bin/bash
+
+scp alphaboi@curtisnewbie.com:/home/alphaboi/services/docker-compose.yml .
+scp alphaboi@curtisnewbie.com:/home/alphaboi/services/nginx/nginx.conf .

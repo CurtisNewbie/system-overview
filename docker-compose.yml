@@ -222,6 +222,8 @@ services:
       - backend
     restart: always
     stop_signal: SIGTERM
+    expose:
+      - 7070
     depends_on:
       - "consul"
     deploy:
@@ -351,6 +353,78 @@ services:
         limits:
           cpus: '1'
           memory: '500m'
+
+  # 8082 
+#  file-service:
+#    build: ./file-service/build
+#    env_file:
+#      - ./backend.env
+#    volumes:
+#      - /home/alphaboi/file:/home/alphaboi/file
+#      - /home/alphaboi/services/file-service/logs:/usr/src/file-service/logs    
+#    networks:
+#      - backend
+#    restart: always 
+#    stop_signal: SIGTERM
+#    depends_on:
+#      - "consul"
+#      - "redis"
+#      - "rabbitmq"
+#    command:
+#      "java \
+#       -jar -Xmx800m file-server.jar \
+#       --spring.profiles.active=test \
+#       --event.sync.enabled=true \
+#       --event.sync.ip-address=192.168.10.18 \
+#       --event.sync.secret='' \
+#       --server.port=8082"
+
+  # 7070
+#   auth-gateway:
+#     build: ./auth-gateway/build
+#     env_file: 
+#       - ./backend.env
+#     volumes:
+#       - /home/alphaboi/services/auth-gateway/logs:/usr/src/auth-gateway/logs    
+#     networks:
+#       - backend 
+#     restart: always 
+#     depends_on:
+#       - "consul"
+#       - "redis"
+#       - "rabbitmq"
+#     command:
+#       "java \
+#        -jar -Xmx500m auth-gateway.jar \
+#        --spring.profiles.active=test \
+#        --server.port=7070"
+
+  # 8080
+#  auth-service:
+#    build: ./auth-service/build
+#    env_file: 
+#      - ./backend.env
+#    volumes:
+#      - /home/alphaboi/services/auth-service/logs:/usr/src/auth-service/logs    
+#    networks:
+#      - backend 
+#    restart: always 
+#    stop_signal: SIGTERM
+#    depends_on:
+#      - "consul"
+#      - "redis"
+#      - "rabbitmq"
+#    command:
+#      "java \
+#       -jar -Xmx500m auth-service.jar \
+#       --spring.profiles.active=test \
+#       --server.port=8080"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '1'
+#          memory: '1g'
+
 
 networks:
   backend:
