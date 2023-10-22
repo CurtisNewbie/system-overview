@@ -232,6 +232,26 @@ services:
           cpus: '2'
           memory: '300m'
 
+  # 8091
+  docindexer:
+    build: ./docindexer/build
+    env_file:
+      - ./backend.env
+    volumes:
+      - /home/alphaboi/services/docindexer/config:/usr/src/config
+      - /home/alphaboi/services/docindexer/logs:/usr/src/logs
+    networks:
+      - backend
+    restart: always
+    stop_signal: SIGTERM
+    depends_on:
+      - "consul"
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '300m'
+
   nginx:
     image: nginx:alpine
     volumes:
