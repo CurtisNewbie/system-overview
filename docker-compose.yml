@@ -264,6 +264,8 @@ services:
     networks:
       - backend
     restart: always
+    depends_on:
+      - "gatekeeper"
     deploy:
       resources:
         limits:
