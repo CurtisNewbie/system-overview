@@ -25,26 +25,26 @@ services:
           memory: '100m'
 
   # 8082
-  fantahsea:
-    build: ./fantahsea/build
-    env_file:
-      - ./backend.env
-    volumes:
-      - /home/alphaboi/services/fantahsea/logs:/usr/src/fantahsea/logs
-      - /home/alphaboi/services/fantahsea/config:/usr/src/fantahsea/config
-    networks:
-      - backend
-    restart: always
-    stop_signal: SIGTERM
-    depends_on:
-      - "consul"
-      - "redis"
-      - "rabbitmq"
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: '100m'
+#   fantahsea:
+#     build: ./fantahsea/build
+#     env_file:
+#       - ./backend.env
+#     volumes:
+#       - /home/alphaboi/services/fantahsea/logs:/usr/src/fantahsea/logs
+#       - /home/alphaboi/services/fantahsea/config:/usr/src/fantahsea/config
+#     networks:
+#       - backend
+#     restart: always
+#     stop_signal: SIGTERM
+#     depends_on:
+#       - "consul"
+#       - "redis"
+#       - "rabbitmq"
+#     deploy:
+#       resources:
+#         limits:
+#           cpus: '1'
+#           memory: '100m'
 
   # 8083
   dtaskgo:
@@ -74,7 +74,7 @@ services:
     env_file:
       - ./backend.env
     volumes:
-      - /home/alphaboi/fstore/:/home/alphaboi/fstore/
+      - /mnt/extdrive/fstore/:/home/alphaboi/fstore/
       - /home/alphaboi/services/mini-fstore/logs:/usr/src/logs
       - /home/alphaboi/services/mini-fstore/config:/usr/src/config
     networks:
