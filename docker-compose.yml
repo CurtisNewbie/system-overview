@@ -3,26 +3,26 @@ version: "3.9"
 services:
 
   # 8081
-  goauth:
-    build: ./goauth/build
-    env_file:
-      - ./backend.env
-    volumes:
-      - /home/alphaboi/services/goauth/logs:/usr/src/goauth/logs
-      - /home/alphaboi/services/goauth/config:/usr/src/goauth/config
-    networks:
-      - backend
-    restart: always
-    stop_signal: SIGTERM
-    depends_on:
-      - "consul"
-      - "redis"
-      - "rabbitmq"
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: '100m'
+#  goauth:
+#    build: ./goauth/build
+#    env_file:
+#      - ./backend.env
+#    volumes:
+#      - /home/alphaboi/services/goauth/logs:/usr/src/goauth/logs
+#      - /home/alphaboi/services/goauth/config:/usr/src/goauth/config
+#    networks:
+#      - backend
+#    restart: always
+#    stop_signal: SIGTERM
+#    depends_on:
+#      - "consul"
+#      - "redis"
+#      - "rabbitmq"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '1'
+#          memory: '100m'
 
   # 8082
 #   fantahsea:
@@ -77,6 +77,7 @@ services:
       - /mnt/extdrive/fstore/:/home/alphaboi/fstore/
       - /home/alphaboi/services/mini-fstore/logs:/usr/src/logs
       - /home/alphaboi/services/mini-fstore/config:/usr/src/config
+      - /home/alphaboi/services/mini-fstore/tmp:/usr/src/tmp
     networks:
       - backend
     restart: always
@@ -145,13 +146,14 @@ services:
       - /home/alphaboi/services/logbot/config:/usr/src/config
       - /home/alphaboi/services/logbot/logs:/usr/src/logs
       - /home/alphaboi/services/hammer/logs/hammer.log:/usr/src/logs/watch/hammer.log
-      - /home/alphaboi/services/fantahsea/logs/fantahsea.log:/usr/src/logs/watch/fantahsea.log
       - /home/alphaboi/services/vfm/logs/vfm.log:/usr/src/logs/watch/vfm.log
       - /home/alphaboi/services/mini-fstore/logs/mini-fstore.log:/usr/src/logs/watch/mini-fstore.log
       - /home/alphaboi/services/goauth/logs/goauth.log:/usr/src/logs/watch/goauth.log
-      - /home/alphaboi/services/dtaskgo/logs/dtaskgo.log:/usr/src/logs/watch/dtaskgo.log
-      - /home/alphaboi/services/auth-gateway/logs/auth-gateway.log:/usr/src/logs/watch/auth-gateway.log
       - /home/alphaboi/services/user-vault/logs/user-vault.log:/usr/src/logs/watch/user-vault.log
+      - /home/alphaboi/services/event-pump/logs/event-pump.log:/usr/src/logs/watch/event-pump.log
+      - /home/alphaboi/services/gatekeeper/logs/gatekeeper.log:/usr/src/logs/watch/gatekeeper.log
+      - /home/alphaboi/services/docindexer/logs/docindexer.log:/usr/src/logs/watch/docindexer.log
+      - /home/alphaboi/services/postbox/logs/postbox.log:/usr/src/logs/watch/postbox.log
     networks:
       - backend
     restart: always
@@ -251,6 +253,26 @@ services:
       resources:
         limits:
           cpus: '1'
+          memory: '300m'
+
+  # 8092
+  postbox:
+    build: ./postbox/build
+    env_file:
+      - ./backend.env
+    volumes:
+      - /home/alphaboi/services/postbox/config:/usr/src/config
+      - /home/alphaboi/services/postbox/logs:/usr/src/logs
+    networks:
+      - backend
+    restart: always
+    stop_signal: SIGTERM
+    depends_on:
+      - "consul"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
           memory: '300m'
 
   nginx:
