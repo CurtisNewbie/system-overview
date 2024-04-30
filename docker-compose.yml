@@ -284,6 +284,7 @@ services:
       - /home/alphaboi/services/nginx/logs:/var/log/nginx
     ports:
       - "0.0.0.0:443:443"
+      - "0.0.0.0:3000:3000"
     networks:
       - backend
     restart: always
@@ -389,8 +390,6 @@ services:
     env_file:
       - /home/alphaboi/services/grafana/config.monitoring
     user: root
-    ports:
-      - "0.0.0.0:3000:3000"
     networks:
       - backend
     deploy:
