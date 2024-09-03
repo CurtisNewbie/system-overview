@@ -93,27 +93,27 @@ services:
           memory: '300m'
 
   # 8085
-  hammer:
-    build: ./hammer/build
-    env_file:
-      - ./backend.env
-    volumes:
-      - /home/alphaboi/services/hammer/logs:/usr/src/logs
-      - /home/alphaboi/services/hammer/config:/usr/src/config
-      - /tmp/hammer/temp:/tmp
-    networks:
-      - backend
-    restart: always
-    stop_signal: SIGTERM
-    depends_on:
-      - "consul"
-      - "redis"
-      - "rabbitmq"
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: '200m'
+#  hammer:
+#    build: ./hammer/build
+#    env_file:
+#      - ./backend.env
+#    volumes:
+#      - /home/alphaboi/services/hammer/logs:/usr/src/logs
+#      - /home/alphaboi/services/hammer/config:/usr/src/config
+#      - /tmp/hammer/temp:/tmp
+#    networks:
+#      - backend
+#    restart: always
+#    stop_signal: SIGTERM
+#    depends_on:
+#      - "consul"
+#      - "redis"
+#      - "rabbitmq"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '1'
+#          memory: '200m'
 
   # 8086
   vfm:
@@ -236,44 +236,44 @@ services:
           memory: '300m'
 
   # 8091
-  docindexer:
-    build: ./docindexer/build
-    env_file:
-      - ./backend.env
-    volumes:
-      - /home/alphaboi/services/docindexer/config:/usr/src/config
-      - /home/alphaboi/services/docindexer/logs:/usr/src/logs
-    networks:
-      - backend
-    restart: always
-    stop_signal: SIGTERM
-    depends_on:
-      - "consul"
-    deploy:
-      resources:
-        limits:
-          cpus: '1'
-          memory: '300m'
+#  docindexer:
+#    build: ./docindexer/build
+#    env_file:
+#      - ./backend.env
+#    volumes:
+#      - /home/alphaboi/services/docindexer/config:/usr/src/config
+#      - /home/alphaboi/services/docindexer/logs:/usr/src/logs
+#    networks:
+#      - backend
+#    restart: always
+#    stop_signal: SIGTERM
+#    depends_on:
+#      - "consul"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '1'
+#          memory: '300m'
 
   # 8092
-  postbox:
-    build: ./postbox/build
-    env_file:
-      - ./backend.env
-    volumes:
-      - /home/alphaboi/services/postbox/config:/usr/src/config
-      - /home/alphaboi/services/postbox/logs:/usr/src/logs
-    networks:
-      - backend
-    restart: always
-    stop_signal: SIGTERM
-    depends_on:
-      - "consul"
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: '300m'
+#  postbox:
+#    build: ./postbox/build
+#    env_file:
+#      - ./backend.env
+#    volumes:
+#      - /home/alphaboi/services/postbox/config:/usr/src/config
+#      - /home/alphaboi/services/postbox/logs:/usr/src/logs
+#    networks:
+#      - backend
+#    restart: always
+#    stop_signal: SIGTERM
+#    depends_on:
+#      - "consul"
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '0.5'
+#          memory: '300m'
 
   nginx:
     image: nginx:alpine
@@ -285,6 +285,7 @@ services:
     ports:
       - "0.0.0.0:443:443"
       - "0.0.0.0:3000:3000"
+      - "0.0.0.0:3100:3100"
     networks:
       - backend
     restart: always
