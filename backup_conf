@@ -2,4 +2,4 @@
 
 scp alphaboi@curtisnewbie.com:/home/alphaboi/services/docker-compose.yml .
 scp alphaboi@curtisnewbie.com:/home/alphaboi/services/nginx/nginx.conf .
-scp alphaboi@curtisnewbie.com:/home/alphaboi/services/prometheus/prometheus.yml .
+# scp alphaboi@curtisnewbie.com:/home/alphaboi/services/prometheus/prometheus.yml .
