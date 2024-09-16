@@ -283,7 +283,7 @@ services:
       - /home/alphaboi/services/nginx/html:/usr/share/nginx/html
       - /home/alphaboi/services/nginx/logs:/var/log/nginx
     healthcheck:
-      test: curl --fail https://curtisnewbie.com/health --insecure
+      test: curl --fail https://localhost:443/health --insecure
       interval: 5s
       timeout: 1s
       retries: 3
