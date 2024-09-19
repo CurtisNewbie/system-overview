@@ -283,8 +283,8 @@ services:
       - /home/alphaboi/services/nginx/html:/usr/share/nginx/html
       - /home/alphaboi/services/nginx/logs:/var/log/nginx
     healthcheck:
-      test: curl --retry 3 --retry-delay 1 --fail https://localhost:443/health --insecure || kill 1
-      interval: 5s
+      test: curl --retry 5 --retry-delay 1 --fail https://localhost:443/health --insecure || kill 1
+      interval: 1s
     ports:
       - "0.0.0.0:443:443"
       - "0.0.0.0:3000:3000"
